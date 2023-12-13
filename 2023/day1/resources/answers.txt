@@ -1,0 +1,5 @@
+--- Day 1: Trebuchet?! ---
+Your puzzle answer was 54667.
+
+--- Part Two ---
+Your puzzle answer was 54203.
