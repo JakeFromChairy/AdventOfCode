@@ -2,16 +2,14 @@ input = open("../resources/input.txt","r")
 lines = input.read().splitlines()
 
 sum = 0
-redMax = 12
-greenMax = 13
-blueMax = 14
 
 for line in lines:
-    gameIsPossible = True
+    minNeededRed = 0
+    minNeededBlue = 0
+    minNeededGreen = 0
 
     # Split line into title and results
     info = line.split(':')
-    title = info[0]
     results = info[1]
 
     # Split the results into individual rounds
@@ -25,28 +23,21 @@ for line in lines:
             outcome = count.split(' ')
             # And the count into value and color, ignoring the space,
             # will be: ['', '#', 'color']
-            # then check for impossible games
+            # then check values to determine minimum needed per game
         
             if outcome[2] == 'red':
-                if int(outcome[1]) > redMax:
-                    gameIsPossible = False
-                    break
+                if int(outcome[1]) > minNeededRed:
+                    minNeededRed = int(outcome[1])
             if outcome[2] == 'green':
-                if int(outcome[1]) > greenMax:
-                    gameIsPossible = False
-                    break
+                if int(outcome[1]) > minNeededGreen:
+                    minNeededGreen = int(outcome[1])
             if outcome[2] == 'blue':
-                if int(outcome[1]) > blueMax:
-                    gameIsPossible = False
-                    break
-        
-        if gameIsPossible == False:
-            break
+                if int(outcome[1]) > minNeededBlue:
+                    minNeededBlue = int(outcome[1])
             
-    if gameIsPossible:
-        gameID = int(title.split(' ')[1])
-        sum += gameID
-
+    # Get the power of the set & add to the sum
+    power = minNeededRed * minNeededBlue * minNeededGreen
+    sum += power
 
 
 print(sum)
