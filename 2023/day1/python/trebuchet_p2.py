@@ -34,10 +34,12 @@ sum = 0
 
 for line in lines:
     numbers = re.findall(r"(?=("+'|'.join(targets)+r"))", line)
-        
+
     firstDigitValue = values[numbers[0]] * 10
     lastDigitValue = values[numbers[-1]]
-    
+
     sum += (firstDigitValue+lastDigitValue)
+
+
 
 print(sum)
