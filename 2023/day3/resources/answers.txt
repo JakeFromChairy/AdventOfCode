@@ -1,2 +1,4 @@
 --- Day 3: Gear Ratios ---
+Your puzzle answer was 554003.
 
+--- Part Two ---
